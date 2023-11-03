@@ -1,0 +1,30 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  annotations:
+    backstage.io/kubernetes-id: simple-web
+    backstage.io/kubernetes-namespace: simple
+    backstage.io/kubernetes-label-selector: 'app=simple-web,environment=dev,service=simple-web'
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/linguist: https://github.com/kwangil77/simple-web.git
+    argocd/app-name: simple-web
+    sonarqube.org/project-key: 'com.example:simple-web'
+    vault.io/secrets-path: simple
+    grafana/alert-label-selector: 'app=simple-web,environment=dev,service=simple-web'
+    grafana/dashboard-selector: "title == 'Node.js Observability'"
+  links:
+  - url: https://github.com/kwangil77/simple-web
+    title: Homepage
+    icon: home
+  - url: https://github.com/kwangil77/simple-web
+    title: Source
+    icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: devops
+  system: simple-external
+  consumesApis:
+  - simple-rest
+  - simple-graphql
