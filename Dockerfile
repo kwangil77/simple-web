@@ -1,4 +1,4 @@
-FROM harbor.example.io/docker.io/library/node:20-bookworm AS builder
+FROM docker.io/library/node:20-bookworm AS builder
 LABEL maintainer="Kwangil Ha <kwangil77@hotmail.com>"
 ENV NEXT_TELEMETRY_DISABLED="1"
 WORKDIR /src
@@ -13,13 +13,13 @@ RUN cp .env.example .env \
     && npm run graphql:generate \
     && npm run build
 
-FROM harbor.example.io/docker.io/library/node:20-bookworm AS nodejs
+FROM docker.io/library/node:20-bookworm AS nodejs
 LABEL maintainer="Kwangil Ha <kwangil77@hotmail.com>"
 WORKDIR /src
 COPY --from=builder /src/package.json /src/package-lock.json ./
 RUN npm install --only=prod
 
-FROM harbor.example.io/docker.io/library/node:20-bookworm-slim
+FROM docker.io/library/node:20-bookworm-slim
 LABEL maintainer="Kwangil Ha <kwangil77@hotmail.com>"
 ENV NEXT_TELEMETRY_DISABLED="1"
 ENV HOSTNAME="0.0.0.0"
