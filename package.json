@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node index.js",
+    "start": "next start",
     "lint": "next lint",
     "openapi:download": "mkdir -p ./schema && curl -sq https://apicurio-registry.example.io/apis/registry/v2/groups/simple/artifacts/simple-rest -o ./schema/simple-rest.json",
     "proto:download": "mkdir -p ./schema && curl -sq https://apicurio-registry.example.io/apis/registry/v2/groups/simple/artifacts/simple-grpc -o ./schema/simple-grpc.proto",
@@ -21,18 +21,13 @@
     "@opentelemetry/sdk-trace-node": "^1.15.2",
     "@tanstack/react-query": "^4.36.1",
     "axios": "^1.5.1",
-    "express": "^4.18.2",
-    "express-prom-bundle": "^6.6.0",
-    "express-winston": "^4.2.0",
     "form-data": "^4.0.0",
     "graphql": "^16.8.1",
     "graphql-request": "^4.0.0",
     "graphql-scalars": "1.22.4",
     "next": "13.5.6",
-    "prom-client": "^14.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "winston": "^3.11.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/traverse": "7.23.2",
@@ -51,5 +46,6 @@
     "ts-proto": "^1.162.1",
     "typescript": "5.2.2",
     "typescript-graphql-request": "^4.4.6"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
