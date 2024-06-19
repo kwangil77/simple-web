@@ -19,6 +19,8 @@ ENV NEXT_TELEMETRY_DISABLED="1"
 ENV HOSTNAME="0.0.0.0"
 ENV NODE_ENV="production"
 WORKDIR /src
+COPY --from=builder /src/public ./public
 COPY --from=builder /src/.next/standalone ./
+COPY --from=builder /src/.next/static ./.next/static
 EXPOSE 3000
 ENTRYPOINT ["node", "server.js"]
